@@ -1,71 +1,30 @@
-Here is the **complete, polished, and ready-to-paste** code for your `README.md` file.
-
-I have included a **Sequence Diagram** (using Mermaid syntax, which renders automatically in VS Code and GitHub) to make it look professional.
-
-### 📋 Instructions:
-1. Open VS Code.
-2. Create a file named `README.md`.
-3. **Copy the code block below** and paste it into the file.
-4. Press `Ctrl + Shift + V` (Windows/Linux) or `Cmd + Shift + V` (Mac) to preview it.
-
-***
-
-```markdown
-# 🛡️ Secure Messenger — Cryptography & Network Security
-
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)
-![Security](https://img.shields.io/badge/Security-AES--CCM%20%7C%20RSA%20%7C%20ECDH-green?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
+# Secure Messenger — Cryptography & Network Security Project
 
 ## 📌 Overview
 
-**Secure Messenger** is a Python-based encrypted chat application designed to demonstrate secure network communication concepts. It implements a **Hybrid Cryptosystem** where:
-1.  **Authentication** is handled via **RSA Digital Signatures**.
-2.  **Key Exchange** is performed using **Elliptic Curve Diffie-Hellman (ECDH)**.
-3.  **Message Transport** is secured using **AES-CCM (Counter with CBC-MAC)**, providing both confidentiality and integrity.
+This project implements a **secure messenger** that allows encrypted communication between two machines over a network. It provides a **128-bit security level** using **AES-CCM** encryption and ensures authentication through **RSA-signed ECDH key exchange**.  
 
-This project was built for the **Cryptography & Network Security** course.
+The messenger supports real-time chat while protecting messages from eavesdropping and tampering.
 
 ---
 
-## 🏗️ Architecture & Handshake Flow
+## 🔐 Features
 
-The application follows a secure handshake protocol before allowing chat messages.
+- **Authenticated Key Exchange**:  
+  Uses **Elliptic Curve Diffie-Hellman (ECDH)** for shared secret derivation, with **RSA signatures** for authentication.
 
-```mermaid
-sequenceDiagram
-    participant C as Client (Alice)
-    participant S as Server (Bob)
-    
-    Note over C, S: Phase 1: Authentication & Key Exchange
-    C->>S: Connection Request
-    S->>C: Send Server Public Key (ECDH) + RSA Signature
-    C->>C: Verify Signature & Generate Client Keys
-    C->>S: Send Client Public Key (ECDH) + RSA Signature
-    S->>S: Verify Signature
-    
-    Note over C, S: Phase 2: Key Derivation
-    C->>C: Compute Shared Secret (ECDH) -> HKDF -> AES Key
-    S->>S: Compute Shared Secret (ECDH) -> HKDF -> AES Key
-    
-    Note over C, S: Phase 3: Secure Chat (AES-CCM)
-    C->>S: Encrypted Message (Ciphertext + Nonce + Tag)
-    S->>C: Encrypted Message (Ciphertext + Nonce + Tag)
-```
+- **Session Encryption**:  
+  Messages are encrypted using **AES-CCM** (authenticated encryption), ensuring both confidentiality and integrity.
+
+- **Secure Session Key Derivation**:  
+  AES keys are derived from ECDH shared secret using **HKDF + SHA256**.
+
+- **Cross-network communication**:  
+  Client and server can run on different machines within the same network.
 
 ---
 
-## 🔐 Key Features
-
-| Feature | Technology Used | Description |
-| :--- | :--- | :--- |
-| **Key Exchange** | **ECDH** (SECP256R1) | Securely derives a shared secret over an insecure channel. |
-| **Authentication** | **RSA-PSS** (2048-bit) | Prevents Man-in-the-Middle (MITM) attacks by verifying identity. |
-| **Encryption** | **AES-128-CCM** | Authenticated encryption ensuring message privacy and tamper detection. |
-| **Key Derivation** | **HKDF + SHA256** | Converts the raw ECDH secret into a strong symmetric session key. |
-| **Replay Protection** | **Nonces/Counters** | Unique nonces prevent replay attacks on encrypted packets. |
-
----
+## 🗂️ Project Structure
 
 ## 🗂️ Project Structure
 

@@ -137,9 +137,6 @@ You can now type messages in either terminal. The text is encrypted before leavi
 * **Prashant Mishra**
 
 ---
-
 ## 📚 References
 * [Cryptography.io Documentation](https://cryptography.io/en/latest/)
-* [RFC 5116 - An Interface and Algorithms for Authenticated Encryption](https://tools.ietf.org/html/rfc5116)
-* [NIST SP 800-56A - Pair-Wise Key Establishment](https://csrc.nist.gov/publications/detail/sp/800-56a/rev-3/final)
 ```
